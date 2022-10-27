@@ -781,6 +781,9 @@
     viewController.statusBarStyle = [UIApplication sharedApplication].statusBarStyle;
     
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    if (@available(iOS 13.0, *)) {
+        window.overrideUserInterfaceStyle = [UIApplication sharedApplication].keyWindow.overrideUserInterfaceStyle;
+    }
     if ([UIDevice currentDevice].systemVersion.intValue == 9) { // Fix bug for keyboard in iOS 9
         window.windowLevel = CGFLOAT_MAX;
     } else {
